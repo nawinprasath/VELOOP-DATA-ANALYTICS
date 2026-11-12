@@ -186,12 +186,7 @@ elif page == "User Engagement":
     ].mean()
 
     st.line_chart(duration_trend)
-    # Weekly Active Users Trend
-    st.divider()
-    st.subheader("Weekly Active Users Trend")
-
-    # Weekly Active Users Trend
-    st.divider()
+    # Weekly Active Users Trend    
     st.subheader("Weekly Active Users Trend")
 
     weekly_data = daily_activity.copy()
@@ -207,12 +202,11 @@ elif page == "User Engagement":
     )["user_id"]
     .nunique()
     )
-
+    weekly_active_users = weekly_active_users.iloc[:-1]
     weekly_active_users.index = weekly_active_users.index.astype(str)
 
     st.line_chart(weekly_active_users)
 
-    st.line_chart(weekly_active_users)
 elif page == "Task Performance":
 
     st.title("Task Performance")
