@@ -38,30 +38,102 @@ milestones = load_data("milestones.csv")
 # ---------------------------------
 # CUSTOM DARK THEME
 # ---------------------------------
+
+# RESPONSIVE LIGHT AND DARK THEME
 st.markdown("""
 <style>
+
+/* Main application */
 .stApp {
-    background-color: #0b1120;
-    color: #f8fafc;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
+/* Sidebar */
 [data-testid="stSidebar"] {
-    background-color: #111827;
+    background-color: #111827 !important;
+    min-width: 260px;
 }
 
-[data-testid="stMetric"] {
-    background-color: #172033;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #263449;
+[data-testid="stSidebar"] > div:first-child {
+    background-color: #111827 !important;
 }
 
-h1, h2, h3 {
+[data-testid="stSidebar"] * {
     color: #f8fafc;
+}
+}
+
+/* Metric cards */
+[data-testid="stMetric"] {
+    background-color: var(--secondary-background-color);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+/* Headings and text */
+h1, h2, h3, p, label {
+    color: var(--text-color);
+}
+
+/* Dashboard spacing */
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 1400px;
+}
+
+/* Charts */
+[data-testid="stVegaLiteChart"],
+[data-testid="stPlotlyChart"],
+[data-testid="stArrowVegaLiteChart"] {
+    width: 100%;
+}
+
+/* Tables */
+[data-testid="stDataFrame"] {
+    width: 100%;
+}
+
+/* Responsive tablet */
+@media screen and (max-width: 992px) {
+    .block-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+/* Responsive mobile */
+@media screen and (max-width: 768px) {
+    .block-container {
+        padding: 1rem 0.75rem;
+    }
+
+    h1 {
+        font-size: 1.7rem !important;
+    }
+
+    h2 {
+        font-size: 1.4rem !important;
+    }
+
+    h3 {
+        font-size: 1.15rem !important;
+    }
+
+    [data-testid="stMetric"] {
+        padding: 12px;
+    }
+
+    [data-testid="stMetricValue"] {
+        font-size: 1.4rem;
+    }
 }
 
 </style>
 """, unsafe_allow_html=True)
+
 
 # ---------------------------------
 # SIDEBAR
